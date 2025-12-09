@@ -1,5 +1,9 @@
 @extends('LandingPage.layouts.main')
 
+@php
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+@endphp
 
 @section('content')
     		<!-- home-section 
@@ -139,29 +143,44 @@
 						<h1>Berita Terbaru</h1>
 					</div>
 					<div class="right-part">
-						<a class="button-one" href="/berita">Lihat Semua Berita</a>
+						<a class="button-one" href="{{ route('berita.index') }}">Lihat Semua Berita</a>
 					</div>
 				</div>
-				{{-- <div class="news-box">
+				<div class="news-box">
 					<div class="row">
-						@foreach ($beritas as $berita)							
+						@php
+							$beritas = \App\Models\Berita::where('status', true)->latest()->limit(4)->get();
+						@endphp
+						@forelse($beritas as $berita)
 							<div class="col-lg-3 col-md-6">
 								<div class="blog-post">
-									<a href="/berita/{{ $berita->id }}"><img src="{{ 'storage/' . $berita->gambar }}" style="height:200px;width: 100vw;object-fit: cover" alt=""></a>
+									<a href="{{ route('berita.show', $berita->slug) }}">
+										@if($berita->gambar)
+											<img src="{{ Storage::url($berita->gambar) }}" 
+												style="height:200px; width: 100%; object-fit: cover;" 
+												alt="{{ $berita->judul }}">
+										@else
+											<img src="/LP/assets/images/placeholder.jpg" 
+												style="height:200px; width: 100%; object-fit: cover;" 
+												alt="{{ $berita->judul }}">
+										@endif
+									</a>
 									<div class="post-content">
-										<a class="category" href="#">Berita</a>
-										<h2><a href="/berita/{{ $berita->id }}">{{ $berita->judul }}</a></h2>
+										<a class="category" href="{{ route('berita.show', $berita->slug) }}">Berita</a>
+										<h2><a href="{{ route('berita.show', $berita->slug) }}">{{ Str::limit($berita->judul, 50) }}</a></h2>
 										<div class="post-meta date">
 											<i class="material-icons">access_time</i> Diposting {{ $berita->created_at->locale('id')->diffForHumans() }}
 										</div>
 									</div>
 								</div>
 							</div>
-						@endforeach
-
+						@empty
+							<div class="col-12">
+								<p class="text-center text-muted">Belum ada berita yang dipublikasikan</p>
+							</div>
+						@endforelse
 					</div>
-						
-				</div> --}}
+				</div>
 			</div>
 		</section>
 		<!-- End news section -->

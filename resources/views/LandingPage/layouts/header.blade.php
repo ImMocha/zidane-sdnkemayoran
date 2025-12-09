@@ -31,7 +31,6 @@
             
             
                 <a href="/dashboard" class="register-modal-opener login-button"><i class="material-icons">perm_identity</i>Dashboard</a>
-                <a href="/dashboard" class="register-modal-opener login-button"><i class="material-icons">perm_identity</i>Masuk</a>
           
 
             @if (!Auth::check())
@@ -40,11 +39,10 @@
         </div>
         <nav class="mobile-nav">
             <ul class="mobile-menu-list">
-                <li>
-                    <li><a class="{{ Request::is('/') ? 'text-primary' : '' }}" href="/">Beranda</a></li>
-                    <li class="drop-link"><a class="{{ Request::is('berita*') ? 'text-primary' : '' }}" href="/berita">Berita</a></li>
-                    <li><a class="{{ Request::is('profil-sekolah') ? 'text-primary' : '' }}" href="/profil-sekolah">Profil Sekolah</a></li>
-                </li>
+                <li><a class="{{ Request::is('/') ? 'text-primary' : '' }}" href="/">Beranda</a></li>
+                <li><a class="{{ Request::is('berita*') ? 'text-primary' : '' }}" href="/berita">Berita</a></li>
+                <li><a class="{{ Request::is('profil-sekolah') ? 'text-primary' : '' }}" href="/profil-sekolah">Profil Sekolah</a></li>
+                <li><a class="{{ Request::is('sekolah-lanjutan') ? 'text-primary' : '' }}" href="/sekolah-lanjutan">Sekolah Lanjutan</a></li>
             </ul>
         </nav>
     </div>
