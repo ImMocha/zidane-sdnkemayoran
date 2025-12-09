@@ -1,0 +1,177 @@
+<!doctype html>
+
+
+<html lang="en" class="no-js">
+<head>
+	<title>SMPN 1 Negeri Kapuas Timur</title>
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,500,500i,600,700&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet" href="/LP/assets/css/studiare-assets.min.css">
+	<link rel="stylesheet" href="/LP/assets/vendors/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="/LP/assets/css/fonts/font-awesome/font-awesome.min.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="/LP/assets/css/fonts/elegant-icons/style.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="/LP/assets/css/fonts/iconfont/material-icons.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="/LP/assets/css/style.css">
+	<link rel="shortcut icon" href="/LP/assets/images/logo.ico" />
+
+</head>
+<body>
+
+	<!-- Container -->
+	<div id="container">
+		<!-- Header
+		================================================== -->
+		@include('LandingPage.layouts.header')
+		<!-- End Header -->
+
+		<!-- page-banner-section 
+			================================================== -->
+            @yield('banner')
+		<!-- End page-banner-section -->
+
+		<!-- section 
+			================================================== -->
+            @yield('content')
+		<!-- End section -->
+
+
+
+		<!-- footer 
+			================================================== -->
+		@include('LandingPage.layouts.footer')
+		<!-- End footer -->
+
+	</div>
+	<!-- End Container -->
+
+	
+	<script src="/LP/assets/js/studiare-plugins.min.js"></script>
+	<script src="/LP/assets/js/jquery.countTo.js"></script>
+	<script src="/LP/assets/js/popper.js"></script>
+	<script src="/LP/assets/js/bootstrap.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyCiqrIen8rWQrvJsu-7f4rOta0fmI5r2SI&amp;sensor=false&amp;language=en"></script>
+	<script src="/LP/assets/js/gmap3.min.js"></script>
+	<script src="/LP/assets/vendors/select2/select2.min.js"></script>
+	<script type="text/javascript" src="/LP/assets/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript" src="/LP/assets/js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript" src="/LP/assets/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript" src="/LP/assets/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script src="/LP/assets/js/script.js"></script>
+	<script type="text/javascript" src="/LP/assets/js/extensions/revolution.extension.parallax.min.js"></script>	
+	<script src="/LP/assets/js/select2.js"></script>
+
+
+	<script>
+		var tpj=jQuery;
+		var revapi202;
+		tpj(document).ready(function() {
+			if (tpj("#rev_slider_202_1").revolution == undefined) {
+				revslider_showDoubleJqueryError("#rev_slider_202_1");
+			} else {
+				revapi202 = tpj("#rev_slider_202_1").show().revolution({
+					sliderType: "standard",
+					jsFileLocation: "js/",
+					dottedOverlay: "none",
+					delay: 5000,
+					navigation: {
+						keyboardNavigation: "off",
+						keyboard_direction: "horizontal",
+						mouseScrollNavigation: "off",
+						onHoverStop: "off",
+						arrows: {
+					        enable: true,
+					        style: 'gyges',
+					        left: {
+					            container: 'slider',
+					            h_align: 'left',
+					            v_align: 'center',
+					            h_offset: 20,
+					            v_offset: -60
+					        },
+					 
+					        right: {
+					            container: 'slider',
+					            h_align: 'right',
+					            v_align: 'center',
+					            h_offset: 20,
+					            v_offset: -60
+					        }
+					    },
+						touch: {
+							touchenabled: "on",
+							swipe_threshold: 75,
+							swipe_min_touches: 50,
+							swipe_direction: "horizontal",
+							drag_block_vertical: false
+						},
+						bullets: {
+ 
+					        enable: false,
+					        style: 'persephone',
+					        tmp: '',
+					        direction: 'horizontal',
+					        rtl: false,
+					 
+					        container: 'slider',
+					        h_align: 'center',
+					        v_align: 'bottom',
+					        h_offset: 0,
+					        v_offset: 55,
+					        space: 7,
+					 
+					        hide_onleave: false,
+					        hide_onmobile: false,
+					        hide_under: 0,
+					        hide_over: 9999,
+					        hide_delay: 200,
+					        hide_delay_mobile: 1200
+ 						}
+					},
+					responsiveLevels: [1210, 1024, 778, 480],
+					visibilityLevels: [1210, 1024, 778, 480],
+					gridwidth: [1210, 1024, 778, 480],
+					gridheight: [700, 700, 600, 600],
+					lazyType: "none",
+					parallax: {
+						type: "scroll",
+						origo: "slidercenter",
+						speed: 1000,
+						levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 46, 47, 48, 49, 50, 100, 55],
+						type: "scroll",
+					},
+					shadow: 0,
+					spinner: "off",
+					stopLoop: "off",
+					stopAfterLoops: -1,
+					stopAtSlide: -1,
+					shuffle: "off",
+					autoHeight: "off",
+					fullScreenAutoWidth: "off",
+					fullScreenAlignForce: "off",
+					fullScreenOffsetContainer: "",
+					fullScreenOffset: "0px",
+					disableProgressBar: "on",
+					hideThumbsOnMobile: "off",
+					hideSliderAtLimit: 0,
+					hideCaptionAtLimit: 0,
+					hideAllCaptionAtLilmit: 0,
+					debugMode: false,
+					fallbacks: {
+						simplifyAll: "off",
+						nextSlideOnWindowFocus: "off",
+						disableFocusListener: false,
+					}
+				});
+			}
+		}); /*ready*/
+
+	</script>
+
+	@yield('script')
+</body>
+</html>
