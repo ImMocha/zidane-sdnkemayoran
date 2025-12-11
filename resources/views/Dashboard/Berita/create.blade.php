@@ -5,7 +5,7 @@
 	<div class="col-md-12 grid-margin stretch-card">
 		<div class="card">
 			<div class="card-body">
-				<h6 class="card-title">Tambah Berita</h6>
+				<h6 class="card-title">Tambah Berita / Materi Belajar</h6>
 
 				@if ($errors->any())
 					<div class="alert alert-danger">
@@ -21,9 +21,24 @@
 					@csrf
 
 					<div class="form-group">
-						<label for="judul">Judul Berita <span class="text-danger">*</span></label>
+						<label for="kategori">Kategori <span class="text-danger">*</span></label>
+						<select class="form-control @error('kategori') is-invalid @enderror" 
+							id="kategori" name="kategori" required>
+							<option value="">Pilih Kategori</option>
+							<option value="berita" {{ old('kategori') == 'berita' ? 'selected' : '' }}>Berita</option>
+							<option value="materi_belajar" {{ old('kategori') == 'materi_belajar' ? 'selected' : '' }}>Materi Belajar</option>
+						</select>
+						@error('kategori')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+						@enderror
+					</div>
+
+					<div class="form-group">
+						<label for="judul">Judul <span class="text-danger">*</span></label>
 						<input type="text" class="form-control @error('judul') is-invalid @enderror" 
-							id="judul" name="judul" placeholder="Masukkan judul berita" 
+							id="judul" name="judul" placeholder="Masukkan judul" 
 							value="{{ old('judul') }}" required>
 						@error('judul')
 							<span class="invalid-feedback" role="alert">
@@ -57,7 +72,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="isi">Isi Berita <span class="text-danger">*</span></label>
+						<label for="isi">Isi Konten <span class="text-danger">*</span></label>
 						<textarea class="form-control @error('isi') is-invalid @enderror" 
 							id="isi" name="isi" rows="10">{{ old('isi') }}</textarea>
 						@error('isi')
@@ -71,13 +86,13 @@
 						<label class="form-check-label" style="font-size: 14px;">
 							<input type="checkbox" class="form-check-input" name="status" value="1" 
 								{{ old('status') ? 'checked' : '' }}>
-							Publikasikan Berita
+							Publikasikan
 						</label>
 					</div>
 
 					<div class="mt-3">
 						<button type="submit" class="btn btn-primary mr-2">
-							<i data-feather="save" class="mr-2"></i>Simpan Berita
+							<i data-feather="save" class="mr-2"></i>Simpan
 						</button>
 						<a href="{{ route('dashboard.beritas.index') }}" class="btn btn-light">
 							<i data-feather="x" class="mr-2"></i>Batal

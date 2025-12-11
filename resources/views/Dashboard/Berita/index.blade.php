@@ -6,10 +6,21 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="d-flex justify-content-between align-items-center mb-4">
-					<h6 class="card-title mb-0">Pengelolaan Berita</h6>
+					<h6 class="card-title mb-0">Pengelolaan Berita & Materi Belajar</h6>
 					<a href="{{ route('dashboard.beritas.create') }}" class="btn btn-primary">
 						<i data-feather="plus" class="mr-2"></i>Tambah Berita
 					</a>
+				</div>
+
+				<div class="mb-3">
+					<form method="GET" action="{{ route('dashboard.beritas.index') }}" class="d-inline-flex align-items-center">
+						<label for="kategori" class="mr-2 mb-0">Filter Kategori:</label>
+						<select name="kategori" id="kategori" class="form-control form-control-sm" style="width: auto; margin-right: 10px;" onchange="this.form.submit()">
+							<option value="">Semua Kategori</option>
+							<option value="berita" {{ request('kategori') == 'berita' ? 'selected' : '' }}>Berita</option>
+							<option value="materi_belajar" {{ request('kategori') == 'materi_belajar' ? 'selected' : '' }}>Materi Belajar</option>
+						</select>
+					</form>
 				</div>
 
 				@if(session('success'))
@@ -28,6 +39,7 @@
 								<th>No</th>
 								<th>Gambar</th>
 								<th>Judul</th>
+								<th>Kategori</th>
 								<th>Penulis</th>
 								<th>Status</th>
 								<th>Tanggal Dibuat</th>
@@ -48,6 +60,13 @@
 									@endif
 								</td>
 								<td>{{ Str::limit($berita->judul, 50) }}</td>
+								<td>
+									@if($berita->kategori == 'berita')
+										<span class="badge badge-info">Berita</span>
+									@else
+										<span class="badge badge-primary">Materi Belajar</span>
+									@endif
+								</td>
 								<td>{{ $berita->penulis }}</td>
 								<td>
 									@if($berita->status)

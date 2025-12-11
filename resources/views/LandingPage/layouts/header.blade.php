@@ -13,9 +13,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="drop-link"><a class="{{ Request::is('/') ? 'active' : '' }}" href="/">Beranda</a></li>
-                    <li class="drop-link"><a class="{{ Request::is('berita*') ? 'active' : '' }}" href="/berita">Berita</a></li>
+                    <li class="drop-link"><a class="{{ Request::is('berita*') ? 'active' : '' }}" href="/berita">Berita & Materi Belajar</a></li>
                     <li><a class="{{ Request::is('profil-sekolah') ? 'active' : '' }}" href="/profil-sekolah">Profil Sekolah</a></li>
-                    <li><a class="{{ Request::is('sekolah-lanjutan') ? 'active' : '' }}" href="/sekolah-lanjutan">Sekolah Lanjutan</a></li>
                 </ul>
 
                 <a href="/dashboard" class="register-modal-opener login-button"><i class="material-icons">perm_identity</i>Dashboard</a>
@@ -42,7 +41,6 @@
                 <li><a class="{{ Request::is('/') ? 'text-primary' : '' }}" href="/">Beranda</a></li>
                 <li><a class="{{ Request::is('berita*') ? 'text-primary' : '' }}" href="/berita">Berita</a></li>
                 <li><a class="{{ Request::is('profil-sekolah') ? 'text-primary' : '' }}" href="/profil-sekolah">Profil Sekolah</a></li>
-                <li><a class="{{ Request::is('sekolah-lanjutan') ? 'text-primary' : '' }}" href="/sekolah-lanjutan">Sekolah Lanjutan</a></li>
             </ul>
         </nav>
     </div>

@@ -11,7 +11,9 @@ use Illuminate\Support\Str;
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <div class="page-banner-box text-white">
-                    <span class="badge bg-light text-danger px-3 py-2" style="border-radius: 40px; font-weight: 600; color:#c90016 !important;">Berita</span>
+                    {{-- <span class="badge bg-light text-danger px-3 py-2" style="border-radius: 40px; font-weight: 600; color:#c90016 !important;">
+                        {{ $berita->kategori == 'berita' ? 'Berita' : 'Materi Belajar' }}
+                    </span> --}}
                     <h1 class="mt-3 mb-3" style="font-weight: 700;color: #fff">{{ $berita->judul }}</h1>
                         <span><i class="material-icons" style="font-size:18px; vertical-align: middle;">person</i> {{ $berita->penulis }}</span>
                         <br>
@@ -43,9 +45,9 @@ use Illuminate\Support\Str;
                 </article>
 
                 <div class="mt-5">
-                    <a href="{{ route('berita.index') }}" class="button-one">
+                    <a href="{{ route('berita.index', ['kategori' => $berita->kategori]) }}" class="button-one">
                         <i class="material-icons" style="vertical-align: middle; margin-right: 5px;">arrow_back</i>
-                        Kembali ke Daftar Berita
+                        Kembali ke Daftar {{ $berita->kategori == 'berita' ? 'Berita' : 'Materi Belajar' }}
                     </a>
                 </div>
             </div>
@@ -53,10 +55,11 @@ use Illuminate\Support\Str;
             <div class="col-lg-4">
                 <div class="sidebar">
                     <div class="widget">
-                        <h3 class="widget-title">Berita Terkini</h3>
+                        <h3 class="widget-title">{{ $berita->kategori == 'berita' ? 'Berita' : 'Materi Belajar' }} Terkini</h3>
                         <ul class="post-list">
                             @php
                                 $latestBeritas = \App\Models\Berita::where('status', true)
+                                    ->where('kategori', $berita->kategori)
                                     ->where('id', '!=', $berita->id)
                                     ->latest()
                                     ->limit(5)
@@ -70,7 +73,7 @@ use Illuminate\Support\Str;
                                     </a>
                                 </li>
                             @empty
-                                <li>Tidak ada berita lainnya</li>
+                                <li>Tidak ada {{ $berita->kategori == 'berita' ? 'berita' : 'materi belajar' }} lainnya</li>
                             @endforelse
                         </ul>
                     </div>

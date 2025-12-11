@@ -21,11 +21,11 @@
                 </li>
                 </li>
 
-                <li class="nav-item nav-category">Berita</li>
+                <li class="nav-item nav-category">Berita & Materi Belajar</li>
                 <li class="nav-item">
                   <a href="{{ route('dashboard.beritas.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="file-text"></i>
-                    <span class="link-title">Pengelolaan Berita</span>
+                    <span class="link-title">Pengelolaan Berita & Materi </span>
                   </a>
                 </li>
                 <li class="nav-item nav-category">Admin</li>

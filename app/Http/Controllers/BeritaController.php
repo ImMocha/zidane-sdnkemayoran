@@ -12,9 +12,15 @@ class BeritaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $beritas = Berita::latest()->get();
+        $query = Berita::latest();
+        
+        if ($request->has('kategori') && $request->kategori != '') {
+            $query->where('kategori', $request->kategori);
+        }
+        
+        $beritas = $query->get();
         return view('Dashboard.Berita.index', compact('beritas'));
     }
 
@@ -33,6 +39,7 @@ class BeritaController extends Controller
     {
         $validated = $request->validate([
             'judul' => 'required|string|max:255',
+            'kategori' => 'required|in:berita,materi_belajar',
             'isi' => 'required|string',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'penulis' => 'nullable|string|max:255',
@@ -82,6 +89,7 @@ class BeritaController extends Controller
 
         $validated = $request->validate([
             'judul' => 'required|string|max:255',
+            'kategori' => 'required|in:berita,materi_belajar',
             'isi' => 'required|string',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'penulis' => 'nullable|string|max:255',

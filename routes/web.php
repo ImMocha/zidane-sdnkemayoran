@@ -27,8 +27,14 @@ Route::get('/profil-sekolah', function () {
     return view('LandingPage.profil-sekolah');
 });
 
-Route::get('/berita', function () {
-    $beritas = \App\Models\Berita::where('status', true)->latest()->paginate(9);
+Route::get('/berita', function (\Illuminate\Http\Request $request) {
+    $query = \App\Models\Berita::where('status', true)->latest();
+    
+    if ($request->has('kategori') && $request->kategori != '') {
+        $query->where('kategori', $request->kategori);
+    }
+    
+    $beritas = $query->paginate(9);
     return view('LandingPage.berita', compact('beritas'));
 })->name('berita.index');
 
